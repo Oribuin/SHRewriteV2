@@ -1,0 +1,9 @@
+name: SkyHypeRewrite
+main: org.skyhype.core.SkyhypePlugin
+version: '2.0'
+description: SkyHype Rewritten plugin
+author: 'Oribuin'
+api-version: '1.16'
+softdepend:
+  - PlaceholderAPI
+

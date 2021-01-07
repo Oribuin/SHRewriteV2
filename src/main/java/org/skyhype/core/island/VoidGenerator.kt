@@ -6,7 +6,7 @@ import org.bukkit.generator.ChunkGenerator
 import java.util.*
 
 class VoidGenerator : ChunkGenerator() {
-    override fun generateChunkData(world: World, random: Random, x: Int, z: Int, biomeGrid: BiomeGrid): ChunkData {
+    override fun generateChunkData(world: World, random: Random, locX: Int, locZ: Int, biomeGrid: BiomeGrid): ChunkData {
 
         for (x in 0..15 step 4) {
             for (z in 0..15 step 4) {

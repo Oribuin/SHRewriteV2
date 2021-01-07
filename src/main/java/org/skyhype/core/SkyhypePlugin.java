@@ -1,5 +1,6 @@
 package org.skyhype.core;
 
+import org.bukkit.Bukkit;
 import org.skyhype.core.manager.CommandManager;
 import org.skyhype.core.manager.DataManager;
 import org.skyhype.core.manager.ItemManager;
