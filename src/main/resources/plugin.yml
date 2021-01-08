@@ -6,4 +6,8 @@ author: 'Oribuin'
 api-version: '1.16'
 softdepend:
   - PlaceholderAPI
-
+commands:
+  hearthstone:
+    description: Hearthstone command
+    usage: /hearthstone
+    aliases: [ 'hs' ]

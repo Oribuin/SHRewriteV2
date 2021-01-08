@@ -6,8 +6,8 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '6.0.0'
 }
 
-group 'xyz.oribuin'
-version '2.0.0'
+group 'org.skyhype'
+version '2.0'
 compileJava.options.encoding = 'UTF-8'
 
 targetCompatibility = JavaVersion.VERSION_1_8
@@ -28,7 +28,7 @@ repositories {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    shadow 'com.sk89q.worldedit:worldedit-bukkit:7.2.0'
 
     // Spigot Stuff
     shadow 'org.spigotmc:spigot:1.16.4'
@@ -37,10 +37,10 @@ dependencies {
     shadow 'com.sk89q.worldguard:worldguard-bukkit:7.0.4'
     shadow 'com.sk89q.worldedit:worldedit-bukkit:7.2.0'
 
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
     implementation 'xyz.oribuin:orilib:1.1.0'
-    implementation 'dev.rosewood:guiframework:1.1.1'
-    implementation 'com.github.WesJD.AnvilGUI:anvilgui:master-SNAPSHOT'
     implementation 'org.reflections:reflections:0.9.12'
+    implementation 'dev.rosewood:guiframework:1.1.2-SNAPSHOT'
     implementation 'com.zaxxer:HikariCP:3.4.5'
 }
 
@@ -62,12 +62,12 @@ shadowJar {
     archiveClassifier.set(null)
 
     // Relocate so much shit
-//    relocate ('org.jetbrains', 'xyz.oribuin.flighttrails.libs.jetbrains')
-//    relocate ('org.intellij', 'xyz.oribuin.flighttrails.libs.intellij')
-//    relocate ('kotlin', 'xyz.oribuin.flighttrails.libs.kotlin')
-    relocate ('net.wesjd.anvilgui', 'org.skyhype.core.libs.anvilgui')
-    relocate ('dev.rosewood.guiframework', 'org.skyhype.core.libs.guiframework')
-    relocate ('xyz.oribuin.orilibrary', 'org.skyhype.core.library')
+    relocate('org.jetbrains', 'org.skyhype.core.libs.jetbrains')
+    relocate('org.intellij', 'org.skyhype.core.libs.intellij')
+    relocate('kotlin', 'org.skyhype.core.libs.kotlin')
+    relocate('net.wesjd.anvilgui', 'org.skyhype.core.libs.anvilgui')
+    relocate('dev.rosewood.guiframework', 'org.skyhype.core.libs.guiframework')
+    relocate('xyz.oribuin.orilibrary', 'org.skyhype.core.library')
     relocate('org.slf4j', 'org.skyhype.core.libs.slf4j')
     relocate('com.zaxxer', 'org.skyhype.core.libs.zaxxer')
     relocate('org.reflections', 'org.skyhype.core.libs.reflections')

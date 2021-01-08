@@ -7,7 +7,7 @@ import xyz.oribuin.orilibrary.OriPlugin
 import xyz.oribuin.orilibrary.manager.Manager
 import xyz.oribuin.orilibrary.util.FileUtils
 
-class DataManager(plugin: OriPlugin?) : Manager(plugin) {
+class DataManager(plugin: OriPlugin) : Manager(plugin) {
     var connector: DatabaseConnector? = null
 
     override fun enable() {
@@ -19,6 +19,8 @@ class DataManager(plugin: OriPlugin?) : Manager(plugin) {
             exception.printStackTrace()
             plugin.server.pluginManager.disablePlugin(plugin)
         }
+
+        this.createTables()
     }
 
     override fun disable() {}

@@ -4,6 +4,7 @@ import net.md_5.bungee.api.ChatColor
 import org.bukkit.Material
 import org.bukkit.craftbukkit.v1_16_R3.inventory.CraftItemStack
 import org.bukkit.event.EventHandler
+import org.bukkit.event.player.AsyncPlayerChatEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.EquipmentSlot
 import org.skyhype.core.SkyhypePlugin
@@ -25,6 +26,7 @@ class Hearthstone(plugin: SkyhypePlugin) : SHItem(plugin) {
     @EventHandler(ignoreCancelled = true)
     fun onInteract(event: PlayerInteractEvent) {
 
+        println(1)
         if (!event.hasItem() || event.hand != EquipmentSlot.HAND) {
             return
         }
@@ -36,5 +38,11 @@ class Hearthstone(plugin: SkyhypePlugin) : SHItem(plugin) {
         }
 
         HearthstoneGUI(plugin, event.player).openMenu()
+    }
+
+    @EventHandler(ignoreCancelled = true)
+    fun AsyncPlayerChatEvent.onChat() {
+        val item = CraftItemStack.asNMSCopy(player.inventory.itemInMainHand)
+        player.sendMessage(item.orCreateTag.keys.toString())
     }
 }

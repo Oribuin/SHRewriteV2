@@ -28,9 +28,17 @@ open class SHItem(val plugin: SkyhypePlugin) : Listener {
     val info: Info
         get() = this.javaClass.getAnnotation(Info::class.java)
 
-    var shItem: ItemStack = ItemStack(Material.AIR)
+    val shItem: ItemStack
         get() {
-            field = ItemBuilder()
+            var item = ItemStack(this.info.material)
+
+            if (this.info.setNBT) {
+                val craftItem = CraftItemStack.asNMSCopy(item)
+                craftItem.orCreateTag.setString("ItemType", ChatColor.stripColor(this.info.name.toLowerCase()))
+                item = CraftItemStack.asBukkitCopy(craftItem)
+            }
+
+            return ItemBuilder(item)
                 .setName(this.info.name)
                 .setGlowing(this.info.glowing)
                 .setLore(this.info.lore.toList())
@@ -38,13 +46,5 @@ open class SHItem(val plugin: SkyhypePlugin) : Listener {
                 .setMaterial(this.info.material)
                 .setAmount(this.info.amount)
                 .build()
-
-            if (this.info.setNBT) {
-                val craftItem = CraftItemStack.asNMSCopy(field)
-                craftItem.orCreateTag.setString("ItemType", ChatColor.stripColor(this.info.name.toLowerCase()))
-                field = CraftItemStack.asBukkitCopy(craftItem)
-            }
-
-            return field
         }
 }

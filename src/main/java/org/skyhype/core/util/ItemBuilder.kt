@@ -20,9 +20,9 @@ import java.util.*
 /**
  * @author Oribuin
  */
-class ItemBuilder(private val debug: Boolean = false) {
+class ItemBuilder(item: ItemStack?, private val debug: Boolean = false) {
 
-    private var itemStack = ItemStack(Material.AIR)
+    private var itemStack = item ?: ItemStack(Material.AIR)
 
     /**
      * Set the ItemStack material
